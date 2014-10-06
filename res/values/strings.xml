@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">ગુજરાતી મારા ભારત </string>
+    <!--
+<string name="hello">My India 12345 - // / ** @@ $$ ## ^^ () ગુજરાતી મારા ભારત \n গুজরাটি আমার ভারত \n 
+गुजराती मेरा भारत \n ಈ ಭಾರತ \n हा भारत आहे \n இது இந்தியா \n 
+ఈ భారతదేశం ఉంది </string>
+    -->
+    <string name="btnText">ગુજરાતી</string>
+    <string name="app_name">TFSLanguage</string>
+
+</resources>
