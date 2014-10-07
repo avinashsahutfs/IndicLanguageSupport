@@ -10,7 +10,7 @@ import android.view.View;
 
 import com.tfs.vts.font.R;
 import com.tfs.vts.font.util.FontHelper;
-import com.tfs.vts.font.util.Preferences;
+import com.tfs.vts.font.util.LanguagePreferences;
 
 /**
  * Activity class to manage UI screen with demonstration of custom font usage.
@@ -19,7 +19,7 @@ import com.tfs.vts.font.util.Preferences;
  * 
  */
 public class MainActivity extends Activity {
-	Preferences language;
+	LanguagePreferences language;
 	Dialog dialog;
 	Bundle savedInstanceState;
 
@@ -27,7 +27,7 @@ public class MainActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		language = new Preferences(this);
+		language = new LanguagePreferences(this);
 		this.savedInstanceState = savedInstanceState;
 	}
 

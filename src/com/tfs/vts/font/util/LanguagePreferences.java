@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
-public class Preferences {
+public class LanguagePreferences {
     SharedPreferences pref;
     Editor editor;
     Context _context;
@@ -12,7 +12,7 @@ public class Preferences {
     private static final String PREF_NAME = "LanguagePref";
     public static final String KEY_LANGUAGE = "lang";
 
-    public Preferences(Context context){
+    public LanguagePreferences(Context context){
         this._context = context;
         pref = _context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
         editor = pref.edit();

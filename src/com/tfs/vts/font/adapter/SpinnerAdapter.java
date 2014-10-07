@@ -1,7 +1,7 @@
 package com.tfs.vts.font.adapter;
 
 import com.tfs.vts.font.R;
-import com.tfs.vts.font.util.Preferences;
+import com.tfs.vts.font.util.LanguagePreferences;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -17,13 +17,13 @@ public class SpinnerAdapter extends BaseAdapter {
 
 	Context context;
 	String[] strings;
-	Preferences language;
+	LanguagePreferences language;
 
 	public SpinnerAdapter(Context context, String[] strings) {
 		super();
 		this.context = context;
 		this.strings = strings;
-		language = new Preferences(context);
+		language = new LanguagePreferences(context);
 	}
 
 	public int getCount() {

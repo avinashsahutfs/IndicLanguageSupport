@@ -7,18 +7,18 @@ import android.widget.TextView;
 
 import com.tfs.vts.font.R;
 import com.tfs.vts.font.util.FontHelper;
-import com.tfs.vts.font.util.Preferences;
+import com.tfs.vts.font.util.LanguagePreferences;
 
 public class SecondActivity extends Activity {
 
 	TextView textView;
-	Preferences language;
+	LanguagePreferences language;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_second);
-		language = new Preferences(this);
+		language = new LanguagePreferences(this);
 		FontHelper.applyFont(this, findViewById(R.id.activity_main_root),
 				language.currentLanguage());
 		textView = (TextView) findViewById(R.id.textView);
