@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.tfs.vts.font.R;
-import com.tfs.vts.font.util.FontHelper;
 import com.tfs.vts.font.util.LanguagePreferences;
 
 /**
@@ -22,6 +21,15 @@ public class MainActivity extends Activity {
 	LanguagePreferences language;
 	Dialog dialog;
 	Bundle savedInstanceState;
+	public static int count = 0;
+	final CharSequence[] languages = { "English", "Hindi", "Gujarati",
+			"Kannada", "Malayalam", "Marathi", "Oriya", "Telugu", "Tamil",
+			"Bengali" };
+	final int[] langids = { 0, 1, 2 };
+
+	final String[] fontpath = { "DEFAULT",
+			"fonts/notosansdevanagariregular.ttf",
+			"fonts/NotoSansGujarati-Regular.ttf" };
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -29,19 +37,12 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		language = new LanguagePreferences(this);
 		this.savedInstanceState = savedInstanceState;
+		if (count == 0)
+			showLanguageChooser(langids, fontpath);
 	}
 
-	public void nextActivity(View v) {
+	private void showLanguageChooser(final int[] ids, final String[] paths) {
 
-		Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-		startActivity(intent);
-
-	}
-
-	public void showDialog(View v) {
-		final CharSequence[] items = { "English", "Hindi", "Gujarati",
-				"Kannada", "Malayalam", "Marathi", "Oriya", "Telugu", "Tamil",
-				"Bengali" };
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle("Pick a language");
 		builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
@@ -50,113 +51,29 @@ public class MainActivity extends Activity {
 			}
 		});
 
-		builder.setSingleChoiceItems(items, -1,
+		builder.setSingleChoiceItems(languages, -1,
 				new DialogInterface.OnClickListener() {
 
 					public void onClick(DialogInterface dialog, int which) {
-						if ("English".equals(items[which])) {
-							FontHelper.applyFont(MainActivity.this,
-									findViewById(R.id.activity_main_root),
-									"fonts/stylish.ttf");
-							language.saveLanguage(
-									"lang",
-									com.tfs.vts.font.util.Constants.FONT_HINDI);
+						if (languages[ids[0]].equals(languages[which])) {
+							language.saveLanguage("lang", fontpath[0]);
+						} else if (languages[ids[1]].equals(languages[which])) {
+							language.saveLanguage("lang", paths[1]);
 							onCreate(savedInstanceState);
-						} else if ("Hindi".equals(items[which])) {
-							FontHelper
-									.applyFont(
-											MainActivity.this,
-											findViewById(R.id.activity_main_root),
-											com.tfs.vts.font.util.Constants.FONT_HINDI);
-							language.saveLanguage(
-									"lang",
-									com.tfs.vts.font.util.Constants.FONT_HINDI);
-							onCreate(savedInstanceState);
-						} else if ("Gujarati".equals(items[which])) {
-							FontHelper
-									.applyFont(
-											MainActivity.this,
-											findViewById(R.id.activity_main_root),
-											com.tfs.vts.font.util.Constants.FONT_GUJRATI);
-							language.saveLanguage(
-									"lang",
-									com.tfs.vts.font.util.Constants.FONT_GUJRATI);
-							onCreate(savedInstanceState);
-						} else if ("Kannada".equals(items[which])) {
-							FontHelper
-									.applyFont(
-											MainActivity.this,
-											findViewById(R.id.activity_main_root),
-											com.tfs.vts.font.util.Constants.FONT_KANNADA);
-							language.saveLanguage(
-									"lang",
-									com.tfs.vts.font.util.Constants.FONT_KANNADA);
-							onCreate(savedInstanceState);
-						} else if ("Malayalam".equals(items[which])) {
-							FontHelper
-									.applyFont(
-											MainActivity.this,
-											findViewById(R.id.activity_main_root),
-											com.tfs.vts.font.util.Constants.FONT_MALAYALAM);
-							language.saveLanguage(
-									"lang",
-									com.tfs.vts.font.util.Constants.FONT_MALAYALAM);
-							onCreate(savedInstanceState);
-						} else if ("Marathi".equals(items[which])) {
-							FontHelper
-									.applyFont(
-											MainActivity.this,
-											findViewById(R.id.activity_main_root),
-											com.tfs.vts.font.util.Constants.FONT_MARATHI);
-							language.saveLanguage(
-									"lang",
-									com.tfs.vts.font.util.Constants.FONT_MARATHI);
-							onCreate(savedInstanceState);
-						} else if ("Oriya".equals(items[which])) {
-							FontHelper
-									.applyFont(
-											MainActivity.this,
-											findViewById(R.id.activity_main_root),
-											com.tfs.vts.font.util.Constants.FONT_ORIYA);
-							language.saveLanguage(
-									"lang",
-									com.tfs.vts.font.util.Constants.FONT_ORIYA);
-							onCreate(savedInstanceState);
-						} else if ("Telugu".equals(items[which])) {
-							FontHelper
-									.applyFont(
-											MainActivity.this,
-											findViewById(R.id.activity_main_root),
-											com.tfs.vts.font.util.Constants.FONT_TELUGU);
-							language.saveLanguage(
-									"lang",
-									com.tfs.vts.font.util.Constants.FONT_TELUGU);
-							onCreate(savedInstanceState);
-						} else if ("Tamil".equals(items[which])) {
-							FontHelper
-									.applyFont(
-											MainActivity.this,
-											findViewById(R.id.activity_main_root),
-											com.tfs.vts.font.util.Constants.FONT_TAMIL);
-							language.saveLanguage(
-									"lang",
-									com.tfs.vts.font.util.Constants.FONT_TAMIL);
-							onCreate(savedInstanceState);
-						} else if ("Bengali".equals(items[which])) {
-							FontHelper
-									.applyFont(
-											MainActivity.this,
-											findViewById(R.id.activity_main_root),
-											com.tfs.vts.font.util.Constants.FONT_BENGALI);
-							language.saveLanguage(
-									"lang",
-									com.tfs.vts.font.util.Constants.FONT_BENGALI);
+						} else if (languages[ids[2]].equals(languages[which])) {
+							language.saveLanguage("lang", fontpath[2]);
 							onCreate(savedInstanceState);
 						}
-
 					}
 				});
 		builder.show();
+		count++;
+	}
+
+	public void nextActivity(View v) {
+
+		Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+		startActivity(intent);
 
 	}
 }

@@ -2,9 +2,11 @@ package com.tfs.vts.font.util;
 
 public class Constants {
 
+	
 	/**
 	 * Font file names
 	 */
+	
 	public static String FONT_HINDI, FONT_MARATHI = "fonts/droid_hindi.ttf";
 	public static String FONT_GUJRATI = "fonts/NotoSansGujarati-Regular.ttf";
 	public static String FONT_KANNADA = "fonts/lohit_kannada.ttf";
@@ -13,6 +15,8 @@ public class Constants {
 	public static String FONT_TELUGU = "fonts/lohit_telugu.ttf";
 	public static String FONT_TAMIL = "fonts/lohit_tamil.ttf";
 	public static String FONT_BENGALI = "fonts/lohit_bengali.ttf";
+	public static final String FONT_DEFAULT = "fonts/stylish.ttf";
+	
 
 	/**
 	 * Font File numbers
