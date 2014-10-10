@@ -22,9 +22,7 @@ public class MainActivity extends Activity {
 	Dialog dialog;
 	Bundle savedInstanceState;
 	public static int count = 0;
-	final CharSequence[] languages = { "English", "Hindi", "Gujarati",
-			"Kannada", "Malayalam", "Marathi", "Oriya", "Telugu", "Tamil",
-			"Bengali" };
+	final CharSequence[] languages = { "English", "Hindi", "Gujarati" };
 	final int[] langids = { 0, 1, 2 };
 
 	final String[] fontpath = { "DEFAULT",

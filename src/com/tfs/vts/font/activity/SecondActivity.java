@@ -1,6 +1,10 @@
 package com.tfs.vts.font.activity;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -31,20 +35,20 @@ public class SecondActivity extends Activity {
 		textView = (TextView) findViewById(R.id.textView);
 		Button button = (Button) findViewById(R.id.button);
 		commonViews = new CommonViewFunctions(this);
+		
+		AsyncTask<Void, Void, Void> task = new MyAsyncTask();
+		task.execute();
 		button.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
 
-				commonViews.showDailog(SecondActivity.this,
-						new DialogOkClickListner() {
+				commonViews.showDailog(new DialogOkClickListner() {
 
-							public void onOkClick() {
-								commonViews.showToast(SecondActivity.this,
-										"ખાતરી " + "કરો કે " + "માટે "
-												+ "ટેક્સી" + "યાહૂ ",
-										Toast.LENGTH_LONG);
-							}
-						}, "ટેક્સી", "ટેક્સી", "યાહૂ ");
+					public void onOkClick() {
+						commonViews.showToast("ખાતરી " + "કરો કે " + "માટે "
+								+ "ટેક્સી" + "યાહૂ ", Toast.LENGTH_LONG);
+					}
+				}, "TaxiForSure", "કેટલાક લાંબા લખાણ અનુવાદ લખાણ ", "બરાબર ");
 			}
 		});
 		textView.setText(getString(R.string.hello));
@@ -55,4 +59,37 @@ public class SecondActivity extends Activity {
 				strings));
 
 	}
+	public class MyAsyncTask extends AsyncTask<Void, Void, Void>{
+		ProgressDialog dialog = commonViews.showProgressDialog("શીર્ષક",
+				"સંદેશ", true, true, false, new OnCancelListener() {
+
+					public void onCancel(DialogInterface dialog) {
+					}
+				});
+		@Override
+		protected void onPreExecute() {
+			dialog.show();
+			super.onPreExecute();
+		}
+		@Override
+		protected Void doInBackground(Void... params) {
+			 try {
+				    int time = Integer.parseInt("5000");    
+				    Thread.sleep(time);
+				   } catch (InterruptedException e) {
+				    e.printStackTrace();
+				   } catch (Exception e) {
+				    e.printStackTrace();
+				   }
+			return null;
+		}
+		@Override
+		protected void onPostExecute(Void result) {
+			super.onPostExecute(result);
+			dialog.dismiss();
+		}
+
+	}
+
+
 }
