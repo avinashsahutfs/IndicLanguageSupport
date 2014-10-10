@@ -126,10 +126,10 @@ public class CommonViewFunctions {
 	 * @param cancelable
 	 * @param cancelableOnTouchOutSide
 	 * @param cancelListener
+	 * @return ProgressDialog with custom fonts
 	 */
 	public ProgressDialog showProgressDialog(final String title, final String message,
-			boolean indeterminate, boolean cancelable,
-			boolean cancelableOnTouchOutSide, OnCancelListener cancelListener) {
+			boolean indeterminate, boolean cancelable, boolean cancelableOnTouchOutSide) {
 		ProgressDialog pDialog = new ProgressDialog(context);
 		pDialog.setTitle(title);
 		pDialog.setIndeterminate(indeterminate);
@@ -139,18 +139,11 @@ public class CommonViewFunctions {
 		((AlertDialog) pDialog)
 				.setOnShowListener(new DialogInterface.OnShowListener() {
 					public void onShow(DialogInterface dialog) {
-						final int idAlertTitle = context.getResources()
-								.getIdentifier("alertTitle", "id", "android");
-						TextView textMessage = (TextView) ((AlertDialog) dialog)
-								.findViewById(android.R.id.message);
-						TextView textTitle = (TextView) ((AlertDialog) dialog)
-								.findViewById(idAlertTitle);
-						textMessage.setTypeface(Typeface.createFromAsset(
-								context.getAssets(),
-								preferences.currentLanguage()));
-						textTitle.setTypeface(Typeface.createFromAsset(
-								context.getAssets(),
-								preferences.currentLanguage()));
+						final int idAlertTitle = context.getResources().getIdentifier("alertTitle", "id", "android");
+						TextView textMessage = (TextView) ((AlertDialog) dialog).findViewById(android.R.id.message);
+						TextView textTitle = (TextView) ((AlertDialog) dialog).findViewById(idAlertTitle);
+						textMessage.setTypeface(Typeface.createFromAsset(context.getAssets(),preferences.currentLanguage()));
+						textTitle.setTypeface(Typeface.createFromAsset(context.getAssets(),preferences.currentLanguage()));
 					}
 				});
 		return pDialog;

@@ -61,11 +61,7 @@ public class SecondActivity extends Activity {
 	}
 	public class MyAsyncTask extends AsyncTask<Void, Void, Void>{
 		ProgressDialog dialog = commonViews.showProgressDialog("શીર્ષક",
-				"સંદેશ", true, true, false, new OnCancelListener() {
-
-					public void onCancel(DialogInterface dialog) {
-					}
-				});
+				"સંદેશ", true, true, false);
 		@Override
 		protected void onPreExecute() {
 			dialog.show();
