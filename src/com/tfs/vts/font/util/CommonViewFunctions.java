@@ -149,5 +149,77 @@ public class CommonViewFunctions {
 
 	}
 
+	/**
+	 * Shows custom dialog with custom font and positive negative button
+	 * 
+	 * @param yesCleickListner
+	 *            Dialog yes button click listener
+	 * @param NoCleickListner
+	 *            Dialog no button click listener
+	 * @param title
+	 *            Title text for dialog box
+	 * @param message
+	 *            Message text for dialog box
+	 * @param yesButtonText
+	 *            yes button text
+	 * @param noButtonText
+	 *            no button text
+	 */
+	public void showNegativePositive(final DialogYesClickListner yesCleickListner, final DialogNoClickListner noClickListner, String title,
+			String message, String yesButtonText, String noButtonText) {
+		final Dialog dialog = new Dialog(context);
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		dialog.setContentView(R.layout.dialog_positive_negative_layout);
+		LinearLayout ll1 = (LinearLayout) dialog.findViewById(R.id.ll1);
+		LinearLayout ll2 = (LinearLayout) dialog.findViewById(R.id.ll2);
+		RelativeLayout ll3 = (RelativeLayout) dialog.findViewById(R.id.rl1);
+		ll1.setBackgroundColor(Color.BLACK);
+		ll2.setBackgroundColor(Color.WHITE);
+		ll3.setBackgroundColor(Color.BLACK);
+		TextView titleText = (TextView) dialog.findViewById(R.id.title);
+		TextView messageText = (TextView) dialog.findViewById(R.id.message);
+		Button yesButton = (Button) dialog.findViewById(R.id.yes);
+		Button noButton = (Button) dialog.findViewById(R.id.no);
+		Typeface tf = Typeface.createFromAsset(context.getAssets(),
+				preferences.currentLanguage());
+
+		titleText.setTypeface(tf);
+		messageText.setTypeface(tf);
+		yesButton.setTypeface(tf);
+		noButton.setTypeface(tf);
+
+		messageText.setTextColor(Color.BLACK);
+
+		titleText.setTextSize(20);
+		messageText.setTextSize(20);
+		yesButton.setTextSize(20);
+		noButton.setTextSize(20);
+
+		titleText.setText(title);
+		messageText.setText(message);
+		yesButton.setText(yesButtonText);
+		noButton.setText(noButtonText);
+
+		dialog.show();
+		Window window = dialog.getWindow();
+		window.setLayout(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
+		yesButton.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View v) {
+				yesCleickListner.onYesClick();
+				dialog.dismiss();
+			}
+		});
+		
+		noButton.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+			noClickListner.onNoClick();
+			dialog.dismiss();
+			}
+		});
+	}
+
+
 	
 }

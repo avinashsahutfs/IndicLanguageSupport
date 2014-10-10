@@ -8,6 +8,7 @@
 ఈ భారతదేశం ఉంది </string>
     -->
     <string name="btnText">ગુજરાતી</string>
+    <string name="btnYesNoDialog">Yes No Dialog</string>
     <string name="app_name">TFSLanguage</string>
 
 </resources>
