@@ -1,7 +1,7 @@
 package com.tfs.vts.font.activity;
 
 import com.tfs.vts.font.R;
-import com.tfs.vts.font.util.FontHelper;
+import com.tfs.vts.font.helper.FontHelper;
 
 import android.app.Activity;
 import android.os.Bundle;

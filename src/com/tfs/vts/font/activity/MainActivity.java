@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.tfs.vts.font.R;
-import com.tfs.vts.font.util.LanguagePreferences;
+import com.tfs.vts.font.preference.LanguagePreferences;
 
 /**
  * Activity class to manage UI screen with demonstration of custom font usage.

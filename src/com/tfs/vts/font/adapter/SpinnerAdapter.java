@@ -10,19 +10,19 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.tfs.vts.font.R;
-import com.tfs.vts.font.util.LanguagePreferences;
+import com.tfs.vts.font.preference.LanguagePreferences;
 
 public class SpinnerAdapter extends BaseAdapter {
 
 	Context context;
 	String[] strings;
-	LanguagePreferences language;
+	LanguagePreferences preference;
 
 	public SpinnerAdapter(Context context, String[] strings) {
 		super();
 		this.context = context;
 		this.strings = strings;
-		language = new LanguagePreferences(context);
+		preference = new LanguagePreferences(context);
 	}
 
 	public int getCount() {
@@ -54,7 +54,7 @@ public class SpinnerAdapter extends BaseAdapter {
 			holder = (ViewHolder) convertView.getTag();
 		}
 		Typeface tf = Typeface.createFromAsset(context.getAssets(),
-				language.currentLanguage());
+				preference.currentLanguage());
 		holder.text.setTypeface(tf);
 		holder.text.setText(string);
 		return convertView;

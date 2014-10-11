@@ -12,18 +12,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tfs.vts.font.R;
-import com.tfs.vts.font.util.CommonViewFunctions;
-import com.tfs.vts.font.util.DialogNoClickListner;
-import com.tfs.vts.font.util.DialogOkClickListner;
-import com.tfs.vts.font.util.DialogYesClickListner;
-import com.tfs.vts.font.util.FontHelper;
-import com.tfs.vts.font.util.LanguagePreferences;
+import com.tfs.vts.font.helper.FontHelper;
+import com.tfs.vts.font.listners.DialogNoClickListner;
+import com.tfs.vts.font.listners.DialogOkClickListner;
+import com.tfs.vts.font.listners.DialogYesClickListner;
+import com.tfs.vts.font.preference.LanguagePreferences;
+import com.tfs.vts.font.util.CommonViews;
 
 public class SecondActivity extends Activity {
 
 	TextView textView;
 	LanguagePreferences language;
-	CommonViewFunctions commonViews;
+	CommonViews commonViews;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class SecondActivity extends Activity {
 		textView = (TextView) findViewById(R.id.textView);
 		Button button = (Button) findViewById(R.id.button);
 		Button yesNoDialogButton = (Button) findViewById(R.id.showYesNoDialog);
-		commonViews = new CommonViewFunctions(this);
+		commonViews = new CommonViews(this);
 
 		AsyncTask<Void, Void, Void> task = new MyAsyncTask();
 		task.execute();
