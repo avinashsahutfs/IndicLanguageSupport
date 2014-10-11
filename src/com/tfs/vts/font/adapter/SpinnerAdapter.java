@@ -1,9 +1,5 @@
 package com.tfs.vts.font.adapter;
 
-import com.tfs.vts.font.R;
-import com.tfs.vts.font.util.LanguagePreferences;
-
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Typeface;
@@ -12,6 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.tfs.vts.font.R;
+import com.tfs.vts.font.util.LanguagePreferences;
 
 public class SpinnerAdapter extends BaseAdapter {
 
@@ -38,7 +37,6 @@ public class SpinnerAdapter extends BaseAdapter {
 		return 0;
 	}
 
-	@SuppressLint({ "ViewHolder", "ResourceAsColor" })
 	public View getView(int position, View convertView, ViewGroup parent) {
 
 		ViewHolder holder;
