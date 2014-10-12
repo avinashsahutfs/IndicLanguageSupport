@@ -20,6 +20,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ataraxia.custom.font.R;
+import com.ataraxia.custom.font.listners.DialogNoClickListner;
+import com.ataraxia.custom.font.listners.DialogOkClickListner;
+import com.ataraxia.custom.font.listners.DialogYesClickListner;
+import com.ataraxia.custom.font.preference.LanguagePreferences;
 
 @TargetApi(Build.VERSION_CODES.FROYO)
 public class CommonViewFunctions {

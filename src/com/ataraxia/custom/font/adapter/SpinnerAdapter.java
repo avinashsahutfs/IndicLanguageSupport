@@ -1,5 +1,7 @@
 package com.ataraxia.custom.font.adapter;
 
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Typeface;
@@ -10,19 +12,18 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.ataraxia.custom.font.R;
-import com.ataraxia.custom.font.preference.LanguagePreferences;
 
 public class SpinnerAdapter extends BaseAdapter {
 
 	Context context;
 	String[] strings;
-	LanguagePreferences preference;
+	String fontPath;
+	List<String> pathlist;
 
-	public SpinnerAdapter(Context context, String[] strings) {
+	public SpinnerAdapter(Context context, String[] strings, String fontPath) {
 		super();
 		this.context = context;
 		this.strings = strings;
-		preference = new LanguagePreferences(context);
 	}
 
 	public int getCount() {
@@ -54,7 +55,7 @@ public class SpinnerAdapter extends BaseAdapter {
 			holder = (ViewHolder) convertView.getTag();
 		}
 		Typeface tf = Typeface.createFromAsset(context.getAssets(),
-				preference.currentLanguage());
+				fontPath);
 		holder.text.setTypeface(tf);
 		holder.text.setText(string);
 		return convertView;

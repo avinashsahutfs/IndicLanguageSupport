@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ataraxia.custom.font.R;
+import com.ataraxia.custom.font.adapter.SpinnerAdapter;
 import com.ataraxia.custom.font.helper.FontHelper;
 import com.ataraxia.custom.font.listners.DialogNoClickListner;
 import com.ataraxia.custom.font.listners.DialogOkClickListner;
@@ -76,8 +77,8 @@ public class SecondActivity extends Activity {
 		String[] strings = { "ખાતરી ", "કરો કે ", "માટે ", "ટેક્સી", "યાહૂ ",
 				"સેમસંગ" };
 		Spinner mySpinner = (Spinner) findViewById(R.id.spinner);
-		mySpinner.setAdapter(new com.ataraxia.custom.font.adapter.SpinnerAdapter(this,
-				strings));
+		mySpinner.setAdapter(new SpinnerAdapter(this,
+				strings,language.currentLanguage()));
 
 	}
 
